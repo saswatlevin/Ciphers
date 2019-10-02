@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <math.h>
 
 char cipher_text[14],plain_text[14],key[14];
@@ -9,59 +10,11 @@ int p_length=0,k_length=0;
 
 int get_alpha_order(char c)
 {
-	if(c=='a'||c=='A')
-		return 0;
-	else if(c=='b'||c=='B')
-		return 1;
-    else if(c=='c'||c=='C')
-		return 2;
-    else if(c=='d'||c=='D')
-		return 3;
-    else if(c=='e'||c=='e')
-		return 4;
-    else if(c=='f'||c=='F')
-		return 5;
-	else if(c=='g'||c=='G')
-		return 6;		
-    else if(c=='h'||c=='H')
-		return 7;
-    else if(c=='i'||c=='I')
-		return 8;
-	else if(c=='j'||c=='J')
-		return 9;
-    else if(c=='k'||c=='K')
-		return 10;
-    else if(c=='l'||c=='L')
-		return 11;
-	else if(c=='m'||c=='M')
-		return 12;
-	else if(c=='n'||c=='N')
-		return 13;
-	else if(c=='o'||c=='O')
-		return 14;
-	else if(c=='p'||c=='P')
-		return 15;
-	else if(c=='q'||c=='Q')
-		return 16;
-    else if(c=='r'||c=='R')
-		return 17;
-	else if(c=='s'||c=='S')
-		return 18;
-	else if(c=='t'||c=='T')
-		return 19;
-	else if(c=='u'||c=='U')
-		return 20;
-	else if(c=='v'||c=='V')
-		return 21;
-	else if(c=='w'||c=='W')
-		return 22;
-	else if(c=='x'||c=='X')
-		return 23;
-	else if(c=='y'||c=='Y')
-		return 24;
-	else if(c=='z'||c=='Z')
-		return 25;
-	else
+	if(isalpha(c))
+	{
+		return tolower(c) - 'a';
+	} 
+	else 
 	{
 		printf("\nNot a valid alphabet");
 		return 26;
@@ -71,64 +24,15 @@ int get_alpha_order(char c)
 
 char conv_num_char(int i)
 {
-	if(i==0)
-		return 'A';
-	else if(i==1)
-		return 'B';
-	else if(i==2)
-		return 'C';
-	else if(i==3)
-		return 'D';
-	else if(i==4)
-		return 'E';
-	else if(i==5)
-		return 'F';
-	else if(i==6)
-		return 'G';
-	else if(i==7)
-		return 'H';
-	else if(i==8)
-		return 'I';
-	else if(i==9)
-		return 'J';
-	else if(i==10)
-		return 'K';
-    else if(i==11)
-		return 'L';
-	else if(i==12)
-		return 'M';
-	else if(i==13)
-		return 'N';
-	else if(i==14)
-		return 'O';
-	else if(i==15)
-		return 'P';
-	else if(i==16)
-		return 'Q';
-	else if(i==17)
-		return 'R';
-	else if(i==18)
-		return 'S';
-	else if(i==19)
-		return 'T';
-	else if(i==20)
-		return 'U';
-	else if(i==21)
-		return 'V';
-	else if(i==22)
-		return 'W';
-	else if(i==23)
-		return 'X';
-	else if(i==24)
-		return 'Y';
-	else if(i==25)
-		return 'Z';
-	else
-	{	
+	if(i > 25)
+	{
 		printf("\nCharacter Bound overshot\n");
 		return 'e';
-    }
-
+	}
+	else
+	{
+		return 'A' + i;	
+	}
 }
 
 
